@@ -1,0 +1,1921 @@
+﻿  Untitled9       // MathJax disabled, set as null to distingish from *missing* 
+MathJax, // where it will be undefined, and should prompt a dialog later.
+ window.mathjax_url = "/static/components/MathJax/MathJax.js";          r
+equire.config({ urlArgs: "v=20160131150857", baseUrl: '/static/', paths: { 
+'auth/js/main': 'auth/js/main.min', custom : '/custom', nbextensions : 
+'/nbextensions', widgets : '/deprecatedwidgets', kernelspecs : '/kernelspecs', 
+underscore : 'components/underscore/underscore-min', backbone : 
+'components/backbone/backbone-min', jquery: 'components/jquery/jquery.min', 
+bootstrap: 'components/bootstrap/js/bootstrap.min', bootstraptour: 
+'components/bootstrap-tour/build/js/bootstrap-tour.min', 'jquery-ui': 
+'components/jquery-ui/ui/minified/jquery-ui.min', moment: 
+'components/moment/moment', codemirror: 'components/codemirror', termjs: 
+'components/term.js/src/term', typeahead: 
+'components/jquery-typeahead/dist/jquery.typeahead' }, map: { // for backward 
+compatibility "*": { "jqueryui": "jquery-ui", } }, shim: { typeahead: { deps: 
+["jquery"], exports: "typeahead" }, underscore: { exports: '_' }, backbone: { 
+deps: ["underscore", "jquery"], exports: "Backbone" }, bootstrap: { deps: 
+["jquery"], exports: "bootstrap" }, bootstraptour: { deps: ["bootstrap"], 
+exports: "Tour" }, "jquery-ui": { deps: ["jquery"], exports: "$" } }, 
+waitSeconds: 30, }); require.config({ map: { '*':{ 'contents': 
+'services/contents', } } });  .MathJax_Hover_Frame {border-radius: .25em; 
+-webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: 
+.25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; 
+-moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; 
+border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+ .MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: 
+pointer} #MathJax_About {position: fixed; left: 50%; width: auto; text-align: 
+center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: 
+black; cursor: default; font-family: message-box; font-size: 120%; font-style: 
+normal; text-indent: 0; text-transform: none; line-height: normal; 
+letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: 
+nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 
+15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 
+20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 
+10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080} .MathJax_Menu 
+{position: absolute; background-color: white; color: black; width: auto; 
+padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; 
+text-align: left; text-indent: 0; text-transform: none; line-height: normal; 
+letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: 
+nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; 
+-webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px 
+#808080; -khtml-box-shadow: 0px 10px 20px #808080} .MathJax_MenuItem {padding: 
+2px 2em; background: transparent} .MathJax_MenuArrow {position: absolute; right: 
+.5em; color: #666666; font-family: 'Arial unicode MS'} .MathJax_MenuActive 
+.MathJax_MenuArrow {color: white} .MathJax_MenuArrow.RTL {left: .5em; right: 
+auto} .MathJax_MenuCheck {position: absolute; left: .7em; font-family: 'Arial 
+unicode MS'} .MathJax_MenuCheck.RTL {right: .7em; left: auto}
+ .MathJax_MenuRadioCheck {position: absolute; left: 1em}
+ .MathJax_MenuRadioCheck.RTL {right: 1em; left: auto} .MathJax_MenuLabel 
+{padding: 2px 2em 4px 1.33em; font-style: italic} .MathJax_MenuRule {border-top: 
+1px solid #CCCCCC; margin: 4px 1px 0px} .MathJax_MenuDisabled {color: GrayText}
+ .MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+ .MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; 
+left: -15px} .MathJax_Preview .MJXc-math {color: inherit!important} 
+#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; 
+display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; 
+font-weight: normal; font-style: normal; text-align: left; text-indent: 0; 
+text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: 
+normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 
+15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 
+15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA} #MathJax_ZoomOverlay 
+{position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; 
+width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: 
+white; opacity: 0; filter: alpha(opacity=0)} #MathJax_ZoomFrame {position: 
+relative; display: inline-block; height: 0; width: 0} #MathJax_ZoomEventTrap 
+{position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; 
+border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: 
+alpha(opacity=0)} .MathJax_Preview {color: #888} #MathJax_Message {position: 
+fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid 
+#959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 
+80%; width: auto; white-space: nowrap} #MathJax_MSIE_Frame {position: absolute; 
+top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 
+0px} .MathJax_Error {color: #CC0000; font-style: italic} .MJXc-script 
+{font-size: .8em} .MJXc-right {-webkit-transform-origin: right; 
+-moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: 
+right; transform-origin: right} .MJXc-bold {font-weight: bold} .MJXc-italic 
+{font-style: italic} .MJXc-scr {font-family: MathJax_Script,'Times New 
+Roman',Times,STIXGeneral,serif} .MJXc-frak {font-family: MathJax_Fraktur,'Times 
+New Roman',Times,STIXGeneral,serif} .MJXc-sf {font-family: 
+MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif} .MJXc-cal 
+{font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+ .MJXc-mono {font-family: MathJax_Typewriter,'Times New 
+Roman',Times,STIXGeneral,serif} .MJXc-largeop {font-size: 150%}
+ .MJXc-largeop.MJXc-int {vertical-align: -.2em} .MJXc-math {display: 
+inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New 
+Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+ .MJXc-display {display: block; text-align: center; margin: 1em 0} .MJXc-math 
+span {display: inline-block} .MJXc-box {display: block!important; text-align: 
+center} .MJXc-box:after {content: " "} .MJXc-rule {display: block!important; 
+margin-top: .1em} .MJXc-char {display: block!important} .MJXc-mo {margin: 0 
+.15em} .MJXc-mfrac {margin: 0 .125em; vertical-align: .25em} .MJXc-denom 
+{display: inline-table!important; width: 100%} .MJXc-denom > * {display: 
+table-row!important} .MJXc-surd {vertical-align: top} .MJXc-surd > * {display: 
+block!important} .MJXc-script-box > * {display: table!important; height: 50%}
+ .MJXc-script-box > * > * {display: table-cell!important; vertical-align: top}
+ .MJXc-script-box > *:last-child > * {vertical-align: bottom} .MJXc-script-box > 
+* > * > * {display: block!important} .MJXc-mphantom {visibility: hidden}
+ .MJXc-munderover {display: inline-table!important} .MJXc-over {display: 
+inline-block!important; text-align: center} .MJXc-over > * {display: 
+block!important} .MJXc-munderover > * {display: table-row!important}
+ .MJXc-mtable {vertical-align: .25em; margin: 0 .125em} .MJXc-mtable > * 
+{display: inline-table!important; vertical-align: middle} .MJXc-mtr {display: 
+table-row!important} .MJXc-mtd {display: table-cell!important; text-align: 
+center; padding: .5em 0 0 .5em} .MJXc-mtr > .MJXc-mtd:first-child {padding-left: 
+0} .MJXc-mtr:first-child > .MJXc-mtd {padding-top: 0} .MJXc-mlabeledtr {display: 
+table-row!important} .MJXc-mlabeledtr > .MJXc-mtd:first-child {padding-left: 0}
+ .MJXc-mlabeledtr:first-child > .MJXc-mtd {padding-top: 0} .MJXc-merror 
+{background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 
+1px 3px; font-style: normal; font-size: 90%} .MJXc-scale0 {-webkit-transform: 
+scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: 
+scaleX(.0); transform: scaleX(.0)} .MJXc-scale1 {-webkit-transform: scaleX(.1); 
+-moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); 
+transform: scaleX(.1)} .MJXc-scale2 {-webkit-transform: scaleX(.2); 
+-moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); 
+transform: scaleX(.2)} .MJXc-scale3 {-webkit-transform: scaleX(.3); 
+-moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); 
+transform: scaleX(.3)} .MJXc-scale4 {-webkit-transform: scaleX(.4); 
+-moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); 
+transform: scaleX(.4)} .MJXc-scale5 {-webkit-transform: scaleX(.5); 
+-moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); 
+transform: scaleX(.5)} .MJXc-scale6 {-webkit-transform: scaleX(.6); 
+-moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); 
+transform: scaleX(.6)} .MJXc-scale7 {-webkit-transform: scaleX(.7); 
+-moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); 
+transform: scaleX(.7)} .MJXc-scale8 {-webkit-transform: scaleX(.8); 
+-moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); 
+transform: scaleX(.8)} .MJXc-scale9 {-webkit-transform: scaleX(.9); 
+-moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); 
+transform: scaleX(.9)} .MathJax_CHTML .noError {vertical-align: -2px; font-size: 
+90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid} 
+.MathJax_Display {text-align: center; margin: 0; position: relative; display: 
+block!important; text-indent: 0; max-width: none; max-height: none; min-width: 
+0; min-height: 0; width: 100%} .MathJax .merror {background-color: #FFFF88; 
+color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; 
+font-size: 90%} .MathJax .MJX-monospace {font-family: monospace} .MathJax 
+.MJX-sans-serif {font-family: sans-serif} #MathJax_Tooltip {background-color: 
+InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 
+5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 
+5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; padding: 3px 4px; z-index: 
+401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: 
+none} .MathJax {display: inline; font-style: normal; font-weight: normal; 
+line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; 
+text-align: left; text-transform: none; letter-spacing: normal; word-spacing: 
+normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; 
+max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; 
+padding: 0; margin: 0} .MathJax img, .MathJax nobr, .MathJax a {border: 0; 
+padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; 
+min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 
+0!important; vertical-align: 0!important} .MathJax span {display: inline; 
+position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; 
+line-height: normal; text-decoration: none} .MathJax nobr {white-space: 
+nowrap!important} .MathJax img {display: inline!important; float: 
+none!important} .MathJax * {transition: none; -webkit-transition: none; 
+-moz-transition: none; -ms-transition: none; -o-transition: none}
+ .MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; 
+overflow: hidden} .MathJax_Processed {display: none!important} .MathJax_ExBox 
+{display: block!important; overflow: hidden; width: 1px; height: 60ex; 
+min-height: 0; max-height: none} .MathJax .MathJax_EmBox {display: 
+block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; 
+max-height: none} .MathJax .MathJax_HitBox {cursor: text; background: white; 
+opacity: 0; filter: alpha(opacity=0)} .MathJax .MathJax_HitBox * {filter: none; 
+opacity: 1; background: transparent} #MathJax_Tooltip * {filter: none; opacity: 
+1; background: transparent} @font-face {font-family: MathJax_Blank; src: 
+url('about:blank')} .MathJax .noError {vertical-align: -2px; font-size: 90%; 
+text-align: left; color: black; padding: 1px 3px; border: 1px solid} @font-face 
+{font-family: STIXMathJax_Main-Web; src: 
+url('http://localhost:8888/static/components/MathJax/fonts/HTML-CSS/STIX-Web/woff/STIXMathJax_Main-Italic.woff?rev=2.5.3') 
+format('woff'); font-style: italic} @font-face {font-family: 
+STIXMathJax_Main-Web; src: 
+url('http://localhost:8888/static/components/MathJax/fonts/HTML-CSS/STIX-Web/woff/STIXMathJax_Main-Regular.woff?rev=2.5.3') 
+format('woff')}  
+
+
+
+
+
+<div id='noscript'> IPython Notebook requires JavaScript.<br> Please enable it 
+to proceed. </div>  
+
+
+
+ Untitled9 Last Checkpoint: 2 hours ago (unsaved changes)    
+
+
+
+
+ Menu  
+Python 3  
+     
+
+
+
+ 
+
+  File
+
+    New Notebook
+
+      Python 3
+
+
+
+    Open...
+
+     
+
+    Make a Copy...
+
+
+    Rename...
+
+
+    Save and Checkpoint
+
+     
+
+    Revert to Checkpoint
+
+      Sunday, January 31, 2016 3:09 PM
+
+
+
+
+    Print Preview
+
+
+    Download as
+
+      IPython Notebook (.ipynb)
+
+
+      Python (.py)
+
+
+      HTML (.html)
+
+
+      Markdown (.md)
+
+
+      reST (.rst)
+
+
+      PDF via LaTeX (.pdf)
+
+
+
+
+    Trusted Notebook
+
+
+
+    Close and Halt
+
+
+
+  Edit
+
+    Cut Cells
+
+
+    Copy Cells
+
+
+    Paste Cells Above
+
+
+    Paste Cells Below
+
+
+    Paste Cells & Replace
+
+
+    Delete Cells
+
+
+    Undo Delete Cells
+
+
+
+    Split Cell
+
+
+    Merge Cell Above
+
+
+    Merge Cell Below
+
+
+
+    Move Cell Up
+
+
+    Move Cell Down
+
+
+
+    Edit Notebook Metadata
+
+
+
+    Find and Replace 
+
+
+
+  View
+
+    Toggle Header
+
+
+    Toggle Toolbar
+
+
+    Cell Toolbar
+
+      None
+
+
+      Edit Metadata
+
+
+      Raw Cell Format
+
+
+      Slideshow
+
+
+
+
+  Insert
+
+    Insert Cell Above
+
+
+    Insert Cell Below
+
+
+
+  Cell
+
+    Run Cells
+
+
+    Run Cells and Select Below
+
+
+    Run Cells and Insert Below
+
+
+    Run All
+
+
+    Run All Above
+
+
+    Run All Below
+
+
+
+    Cell Type
+
+      Code
+
+
+      Markdown
+
+
+      Raw NBConvert
+
+
+
+
+    Current Outputs
+
+      Toggle
+
+
+      Toggle Scrolling
+
+
+      Clear
+
+
+
+    All Output
+
+      Toggle
+
+
+      Toggle Scrolling
+
+
+      Clear
+
+
+
+
+  Kernel
+
+    Interrupt
+
+
+    Restart
+
+
+    Restart & Clear Output
+
+
+    Restart & Run All
+
+
+    Reconnect
+
+
+
+    Change kernel
+
+      Python 3
+
+
+
+
+  Help
+
+    User Interface Tour
+
+
+    Keyboard Shortcuts
+
+
+
+     Notebook Help 
+
+
+     Markdown 
+
+
+
+    Python
+
+
+    IPython
+
+
+    NumPy
+
+
+    SciPy
+
+
+    Matplotlib
+
+
+    SymPy
+
+
+    pandas
+
+
+
+    About
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  CodeMarkdownRaw NBConvertHeading-
+
+
+CellToolbar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xxxxxxxxxx
+
+
+
+ 
+
+Questions:1.) Who was being polled and what was their party affiliation?2.) Did the poll results favor Romney or Obama?3.) How do undecided voters effect the poll?4.) Can we account for the undecided voters?5.) How did voter sentiment change over time?6.) Can we see an effect in the polls from the debates?​Dateset1:​
+
+
+
+Questions: 1.) Who was being polled and what was their party affiliation? 2.) 
+Did the poll results favor Romney or Obama? 3.) How do undecided voters effect 
+the poll? 4.) Can we account for the undecided voters? 5.) How did voter 
+sentiment change over time? 6.) Can we see an effect in the polls from the 
+debates?
+
+Dateset1:
+
+
+
+In [17]:
+
+
+
+
+
+
+http://elections.huffingtonpost.com/pollster/2012-general-election-romney-vs-obama.csv
+
+
+
+
+
+
+
+
+
+
+
+
+x
+
+
+
+ 
+
+url = 'http://elections.huffingtonpost.com/pollster/2012-general-election-romney-vs-obama.csv'
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [54]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+import pandas as pdimport numpy as npfrom pandas import DataFrame, Series
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [4]:
+
+
+
+
+
+
+'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+import matplotlib.pyplot as pltimport seaborn as snssns.set_style('whitegrid')%matplotlib inline
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [38]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+import requests
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [39]:
+
+
+
+
+
+
+io
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+​from io import StringIO
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [40]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+sourse = requests.get(url).text
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [41]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+poll_data = StringIO(sourse)
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [42]:
+
+
+
+
+
+
+poll_data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+poll_data
+
+
+
+×
+
+
+
+
+
+
+Out[42]:
+
+<_io.StringIO at 0xb960168>
+. . .
+
+
+
+In [43]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+poll_df = pd.read_csv(poll_data)
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [44]:
+
+
+
+
+
+
+poll_df.
+
+
+
+
+
+
+
+
+
+
+
+
+x
+
+
+
+
+poll_df.info()
+
+
+
+×
+
+
+
+
+
+
+
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 589 entries, 0 to 588
+Data columns (total 14 columns):
+Pollster                  589 non-null object
+Start Date                589 non-null object
+End Date                  589 non-null object
+Entry Date/Time (ET)      589 non-null object
+Number of Observations    567 non-null float64
+Population                589 non-null object
+Mode                      589 non-null object
+Obama                     589 non-null int64
+Romney                    589 non-null int64
+Undecided                 422 non-null float64
+Pollster URL              589 non-null object
+Source URL                587 non-null object
+Partisan                  589 non-null object
+Affiliation               589 non-null object
+dtypes: float64(2), int64(2), object(10)
+memory usage: 69.0+ KB
+
+. . .
+
+
+
+In [45]:
+
+
+
+
+
+
+sns.factorplot('Affiliation',data=poll_df,kind="count")
+
+
+
+
+
+
+
+
+
+
+
+
+x
+
+
+
+
+sns.factorplot('Affiliation',data=poll_df,kind="count")
+
+
+
+×
+
+
+
+
+
+
+
+C:\Users\woowoo\Anaconda3\lib\site-packages\matplotlib\__init__.py:892: UserWarning: axes.color_cycle is deprecated and replaced with axes.prop_cycle; please use the latter.
+  warnings.warn(self.msg_depr % (key, alt_key))
+
+
+Out[45]:
+
+<seaborn.axisgrid.FacetGrid at 0xc16d668>
+
+
+
+
+. . .
+
+
+
+In [46]:
+
+
+
+
+
+
+count
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+sns.factorplot('Affiliation',data=poll_df,hue="Population",kind="count")
+
+
+
+×
+
+
+
+
+
+
+
+C:\Users\woowoo\Anaconda3\lib\site-packages\matplotlib\__init__.py:892: UserWarning: axes.color_cycle is deprecated and replaced with axes.prop_cycle; please use the latter.
+  warnings.warn(self.msg_depr % (key, alt_key))
+
+
+Out[46]:
+
+<seaborn.axisgrid.FacetGrid at 0xc24a4a8>
+
+
+
+
+. . .
+
+
+
+In [57]:
+
+
+
+
+
+
+df
+
+
+
+
+
+
+
+
+
+
+
+
+x
+
+
+
+ 
+
+avg = pd.DataFrame(poll_df.mean())
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [58]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+std = pd.DataFrame(poll_df.std())
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [63]:
+
+
+
+
+
+
+s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+avg.drop('Number of Observations',axis=0,inplace=True)
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [64]:
+
+
+
+
+
+
+avg
+
+
+
+
+
+
+
+
+
+
+
+
+x
+
+
+
+ 
+
+avg
+
+
+
+×
+
+
+
+
+
+
+Out[64]:
+
+
+
+
+
+    0
+
+
+
+    Obama
+      46.772496
+
+    Romney
+      44.573854
+
+    Undecided
+      6.549763
+
+. . .
+
+
+
+In [65]:
+
+
+
+
+
+
+i
+
+
+
+
+
+
+
+
+
+
+
+
+x
+
+
+
+ 
+
+std.drop('Number of Observations',axis=0,inplace=True)
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [66]:
+
+
+
+
+
+
+std
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+std
+
+
+
+×
+
+
+
+
+
+
+Out[66]:
+
+
+
+
+
+    0
+
+
+
+    Obama
+      2.448627
+
+    Romney
+      2.927711
+
+    Undecided
+      3.702235
+
+. . .
+
+
+
+In [68]:
+
+
+
+
+
+
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+poll_stat = pd.concat([avg,std],axis=1)
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [69]:
+
+
+
+
+
+
+poll_stat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+poll_stat
+
+
+
+×
+
+
+
+
+
+
+Out[69]:
+
+
+
+
+
+    0
+
+    0
+
+
+
+    Obama
+      46.7724962.448627
+
+    Romney
+      44.5738542.927711
+
+    Undecided
+      6.5497633.702235
+
+. . .
+
+
+
+In [70]:
+
+
+
+
+
+
+STD
+
+
+
+
+
+
+
+
+
+
+
+
+xxxxxxxxxx
+
+
+
+ 
+
+poll_stat.columns = ['Average','STD']
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [71]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xxxxxxxxxx
+
+
+
+ 
+
+poll_stat.head()
+
+
+
+×
+
+
+
+
+
+
+Out[71]:
+
+
+
+
+
+    Average
+
+    STD
+
+
+
+    Obama
+      46.7724962.448627
+
+    Romney
+      44.5738542.927711
+
+    Undecided
+      6.5497633.702235
+
+. . .
+
+
+
+In [75]:
+
+
+
+
+
+
+y
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+poll_df.plot(x='End Date',y=['Obama','Romney','Undecided'],marker='o',linestyle='')
+
+
+
+×
+
+
+
+
+
+
+Out[75]:
+
+<matplotlib.axes._subplots.AxesSubplot at 0xc25fe48>
+
+
+
+
+. . .
+
+
+
+In [77]:
+
+
+
+
+
+
+n
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+poll_df['difference'] = (poll_df.Obama - poll_df.Romney)/100
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [78]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xxxxxxxxxx
+
+
+
+ 
+
+poll_df.head()
+
+
+
+×
+
+
+
+
+
+
+Out[78]:
+
+
+
+
+
+    Pollster
+
+    Start Date
+
+    End Date
+
+    Entry Date/Time (ET)
+
+    Number of Observations
+
+    Population
+
+    Mode
+
+    Obama
+
+    Romney
+
+    Undecided
+
+    Pollster URL
+
+    Source URL
+
+    Partisan
+
+    Affiliation
+
+    difference
+
+
+
+    0
+      Politico/GWU/Battleground2012-11-042012-11-052012-11-06 2000-01-01 
+      08:40:26 UTC1000Likely VotersLive 
+      Phone47476http://elections.huffingtonpost.com/pollster/p...http://www.politico.com/news/stories/1112/8338...NonpartisanNone0.00
+
+    1
+      UPI/CVOTER2012-11-032012-11-052012-11-05 2000-01-01 18:30:15 UTC3000Likely 
+      VotersLive 
+      Phone4948NaNhttp://elections.huffingtonpost.com/pollster/p...NaNNonpartisanNone0.01
+
+    2
+      Gravis Marketing2012-11-032012-11-052012-11-06 2000-01-01 09:22:02 
+      UTC872Likely VotersAutomated 
+      Phone48484http://elections.huffingtonpost.com/pollster/p...http://www.gravispolls.com/2012/11/gravis-mark...NonpartisanNone0.00
+
+    3
+      JZ Analytics/Newsmax2012-11-032012-11-052012-11-06 2000-01-01 07:38:41 
+      UTC1041Likely 
+      VotersInternet47476http://elections.huffingtonpost.com/pollster/p...http://www.jzanalytics.com/SponsorRep0.00
+
+    4
+      Rasmussen2012-11-032012-11-052012-11-06 2000-01-01 08:47:50 UTC1500Likely 
+      VotersAutomated 
+      Phone4849NaNhttp://elections.huffingtonpost.com/pollster/p...http://www.rasmussenreports.com/public_content...NonpartisanNone-0.01
+
+. . .
+
+
+
+In [79]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xxxxxxxxxx
+
+
+
+ 
+
+poll_df=poll_df.groupby(['Start Date']).mean()
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+In [80]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xxxxxxxxxx
+
+
+
+ 
+
+poll_df.head()
+
+
+
+×
+
+
+
+
+
+
+Out[80]:
+
+
+
+
+
+    Number of Observations
+
+    Obama
+
+    Romney
+
+    Undecided
+
+    difference
+
+
+    Start Date
+
+
+
+
+
+
+
+
+    2009-03-13
+      14034444120.00
+
+    2009-04-17
+      6865039110.11
+
+    2009-05-14
+      10005335120.18
+
+    2009-06-12
+      6384840120.08
+
+    2009-07-15
+      5774940110.09
+
+. . .
+
+
+
+In [ ]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+​
+
+
+
+×
+
+
+
+
+
+. . .
+
+
+
+
+Close
+
+Expand
+
+Open in Pager
+
+Close
+
+
+
+
+
+
+
+
+
+sys_info = {"sys_version": "3.5.1 |Anaconda 2.4.1 (64-bit)| (default, Jan 29 
+2016, 15:01:46) [MSC v.1900 64 bit (AMD64)]", "sys_executable": 
+"C:\\Users\\woowoo\\Anaconda3\\python.exe", "platform": 
+"Windows-7-6.1.7601-SP1", "notebook_version": "4.1.0", "commit_source": "", 
+"notebook_path": "C:\\Users\\woowoo\\Anaconda3\\lib\\site-packages\\notebook", 
+"os_name": "nt", "sys_platform": "win32", "commit_hash": "", "default_encoding": 
+"cp936"};    
+
