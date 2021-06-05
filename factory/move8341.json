@@ -1,0 +1,9 @@
+{
+	"name": "move8341",
+	"location": "canadaeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c7c36a2f-efd1-4ec9-9517-edf399546b2b",
+		"tenantId": "d3fe8cca-bc13-40f2-a89f-876446069440"
+	}
+}
