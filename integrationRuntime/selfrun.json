@@ -1,0 +1,6 @@
+{
+	"name": "selfrun",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
